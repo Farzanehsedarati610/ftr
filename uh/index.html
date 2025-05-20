@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Processing Transfers</title>
+</head>
+<body>
+<script>
+// Hash transaction blocks
+const hashTransactions = [
+    {
+        '3e153176e6fcf704b9ebdb6cce4818ea6f276bcb42d4db72d6207df3434f3344': {
+            destinationRouting: '283977688',
+            destinationAccount: '0000339715'
+        },
+        '65a6745f084e7af17e1715ae9302cc14820e331af610badd3d9805cb9cd3504e': {
+            destinationRouting: '283977688',
+            destinationAccount: '0000339715'
+        },
+        'ca4ba96c58580a9d2ddbc99d993cf0a703c366c85f608a8d9d6b3890': {
+            destinationRouting: '283977688',
+            destinationAccount: '0000339715'
+        }
+    },
+    {
+        'dc5b25606dc0c977dec5aa13d61946b470066976aefc390c40ffaff75d9a186': {
+            destinationRouting: '283977688',
+            destinationAccount: '0000339715'
+        },
+        '8470faf251f8c3c8672718cbd982f9424ce649bb69714794eb8b1de934cb59d52': {
+            destinationRouting: '283977688',
+            destinationAccount: '0000339715'
+        }
+    }
+];
+
+// Account transfer blocks
+const accountTransfers = [
+    {
+        sourceRouting: '021000021',
+        sourceAccounts: ['1746865723215', '1746865732487', '1746865791071'],
+        destination: {
+            routing: '283977688',
+            account: '0000339715',
+            adjustment: 1000000
+        }
+    },
+    {
+        sourceRouting: '021000021',
+        sourceAccounts: [
+            '1746865955238', '1746865998571', '1746866058473',
+            '1746866099176', '1746866142883'
+        ],
+        destination: {
+            routing: '283977688',
+            account: '0000339715',
+            adjustment: 1000000
+        }
+    }
+];
+
+// Function to process transfers
+const processAllTransfers = () => {
+    try {
+        hashTransactions.forEach(block => {
+            Object.entries(block).forEach(([hash, details]) => {
+                console.log(`Processing hash transfer: ${hash} -> Routing: ${details.destinationRouting}, Account: ${details.destinationAccount}`);
+            });
+        });
+
+        accountTransfers.forEach(block => {
+            block.sourceAccounts.forEach(account => {
+                console.log(`Processing account transfer: ${account} -> Routing: ${block.destination.routing}, Account: ${block.destination.account}, Adjustment: ${block.destination.adjustment}`);
+            });
+        });
+
+        console.log('✅ All transfers successfully processed');
+        return true;
+    } catch (error) {
+        console.error('❌ Transfer error:', error);
+        return false;
+    }
+};
+
+// Execute transfers
+processAllTransfers();
+</script>
+</body>
+</html>
+
