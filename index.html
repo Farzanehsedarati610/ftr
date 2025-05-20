@@ -30,7 +30,6 @@ const accountTransfers = {
     }
 };
 
-
 // Block 3: More hash transfers
 const hashTransactions2 = {
     'dc5b25606dc0c977dec5aa13d61946b470066976aefc390c40ffaff75d9a186': {
@@ -75,7 +74,6 @@ const hashTransactions3 = {
         balance: ((274975958)(0000339715))
     }
 };
-
 
 // Block 6: More hash transfers
 const hashTransactions4 = {
@@ -173,7 +171,7 @@ const accountTransfers5 = {
     }
 };
 
-// Process everything
+// Process everything - ONLY ONE processAllTransfers function
 const processAllTransfers = () => {
     try {
         // Process all hash blocks
@@ -200,17 +198,14 @@ const processAllTransfers = () => {
     }
 };
 
-// Execute all transfers
+// Execute all transfers - ONLY ONE execution
 try {
     processAllTransfers();
     console.log('All transfers complete');
 } catch(e) {
     console.error('System error:', e);
 }
-
 </script>
 </body>
 </html>
-
-
 
