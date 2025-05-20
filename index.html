@@ -30,35 +30,6 @@ const accountTransfers = {
     }
 };
 
-// Process transfers
-const processTransfers = () => {
-    try {
-        // Process hash transfers
-        Object.entries(hashTransactions1).forEach(([hash, details]) => {
-            const transfer = details.balance;
-            console.log(`Hash transfer complete: ${hash}`);
-        });
-
-        // Process account transfers
-        accountTransfers.sourceAccounts.forEach(account => {
-            const transfer = accountTransfers.destination.adjustment;
-            console.log(`Account transfer complete: ${account}`);
-        });
-
-        return true;
-    } catch(e) {
-        console.error('Transfer error:', e);
-        return false;
-    }
-};
-
-// Execute transfers
-try {
-    processTransfers();
-    console.log('All transfers complete');
-} catch(e) {
-    console.error('System error:', e);
-}
 
 // Block 3: More hash transfers
 const hashTransactions2 = {
@@ -105,30 +76,6 @@ const hashTransactions3 = {
     }
 };
 
-// Process all transfers
-const processAllTransfers = () => {
-    try {
-        // Process all hash blocks
-        [hashTransactions1, hashTransactions2, hashTransactions3].forEach(block => {
-            Object.entries(block).forEach(([hash, details]) => {
-                const transfer = details.balance;
-                console.log(`Hash transfer complete: ${hash} -> ${details.destinationRouting}`);
-            });
-        });
-
-        // Process all account blocks
-        [accountTransfers, accountTransfers2].forEach(block => {
-            block.sourceAccounts.forEach(account => {
-                console.log(`Account transfer: ${account} -> ${block.destination.routing}`);
-            });
-        });
-
-        return true;
-    } catch(e) {
-        console.error('Transfer error:', e);
-        return false;
-    }
-};
 
 // Block 6: More hash transfers
 const hashTransactions4 = {
