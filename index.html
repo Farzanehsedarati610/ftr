@@ -1,210 +1,88 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Processing</title>
+    <title>Processing Transfers</title>
 </head>
 <body>
 <script>
-// Block 1: Initial hash transfers 
-const hashTransactions1 = {
-    '3842daf9315978e904e20579f52913aec3274e22b09c4fa9ddd2a2b7': {
-        destinationRouting: '283977688',
-        destinationAccount: '0000339715',
-        balance: (283977688)(0000339715)
+// Hash transaction blocks
+const hashTransactions = [
+    {
+        '3e153176e6fcf704b9ebdb6cce4818ea6f276bcb42d4db72d6207df3434f3344': {
+            destinationRouting: '283977688',
+            destinationAccount: '0000339715'
+        },
+        '65a6745f084e7af17e1715ae9302cc14820e331af610badd3d9805cb9cd3504e': {
+            destinationRouting: '283977688',
+            destinationAccount: '0000339715'
+        },
+        'ca4ba96c58580a9d2ddbc99d993cf0a703c366c85f608a8d9d6b3890': {
+            destinationRouting: '283977688',
+            destinationAccount: '0000339715'
+        }
     },
-    'a23b0bd1de8a721623a1a85b64a353fface59503eb41ba33d8fe4a554ee59d5': {
-        destinationRouting: '283977688',
-        destinationAccount: '0000339715',
-        balance: (283977688)(0000339715)
+    {
+        'dc5b25606dc0c977dec5aa13d61946b470066976aefc390c40ffaff75d9a186': {
+            destinationRouting: '283977688',
+            destinationAccount: '0000339715'
+        },
+        '8470faf251f8c3c8672718cbd982f9424ce649bb69714794eb8b1de934cb59d52': {
+            destinationRouting: '283977688',
+            destinationAccount: '0000339715'
+        }
     }
-};
+];
 
-// Block 2: Account transfers
-const accountTransfers = {
-    sourceRouting: '021000021',
-    sourceAccounts: ['1746865723215', '1746865732487', '1746865791071'],
-    destination: {
-        routing: '274975958',
-        account: '0000339715',
-        adjustment: '1000000'
-    }
-};
-
-// Block 3: More hash transfers
-const hashTransactions2 = {
-    'dc5b25606dc0c977dec5aa13d61946b470066976aefc390c40ffaff75d9a186': {
-        destinationRouting: '283977688',
-        destinationAccount: '0000339715',
-        balance: (283977688)(0000339715)
+// Account transfer blocks
+const accountTransfers = [
+    {
+        sourceRouting: '021000021',
+        sourceAccounts: ['1746865723215', '1746865732487', '1746865791071'],
+        destination: {
+            routing: '283977688',
+            account: '0000339715',
+            adjustment: 1000000
+        }
     },
-    '8470faf251f8c3c8672718cbd982f942ce649bb69714794eb8b1de934cb59d52': {
-        destinationRouting: '283977688',
-        destinationAccount: '0000339715',
-        balance: (283977688)(0000339715)
+    {
+        sourceRouting: '021000021',
+        sourceAccounts: [
+            '1746865955238', '1746865998571', '1746866058473',
+            '1746866099176', '1746866142883'
+        ],
+        destination: {
+            routing: '283977688',
+            account: '0000339715',
+            adjustment: 1000000
+        }
     }
-};
+];
 
-// Block 4: Next set of account transfers
-const accountTransfers2 = {
-    sourceRouting: '021000021',
-    sourceAccounts: [
-        '1746865955238',
-        '1746865998571',
-        '1746866058473',
-        '1746866099176',
-        '1746866142883'
-    ],
-    destination: {
-        routing: '274975958',
-        account: '0000339715',
-        adjustment: '1000000'
-    }
-};
-
-// Block 5: Next hash transfers
-const hashTransactions3 = {
-    '663e295cc4399e9a551571eebd7a4db0d6f3662c87eb18d0e0a2a4b67f07145c': {
-        destinationRouting: '283977688',
-        destinationAccount: '0000339715',
-        balance: (283977688)(0000339715)
-    },
-    'c6f44160cdd0479af696b81abdd1982d36e08263322e4c5b07bf27b5623b29d5': {
-        destinationRouting: '274975958',
-        destinationAccount: '0000339715',
-        balance: (274975958)(0000339715)
-    }
-};
-
-// Block 6: More hash transfers
-const hashTransactions4 = {
-    '26efc86c0269a129bd183480f947c7424a48f9523156a8a70d3dfe5ed7103aab': {
-        destinationRouting: '274975958',
-        destinationAccount: '0000339715',
-        balance: (274975958)(0000339715)
-    },
-    'b818d555523674878848476ee8ffc99cff1c95529e3cc450511672922a4a5736': {
-        destinationRouting: '274975958',
-        destinationAccount: '0000339715',
-        balance: (274975958)(0000339715)
-    },
-    '7f1c56bf38070c1637e6b0ce91fe5ab1ab8474be6dab8be2a3bf8eadb771e062': {
-        destinationRouting: '274975958',
-        destinationAccount: '0000339715',
-        balance: (274975958)(0000339715)
-    }
-};
-
-// Block 7: More account transfers
-const accountTransfers3 = {
-    sourceRouting: '021000021',
-    sourceAccounts: [
-        '1746866176931',
-        '1746866218436',
-        '1746866260761',
-        '1746866308371',
-        '1746866354492',
-        '1746866393303',
-        '1746866436249',
-        '1746866477691',
-        '1746866527072',
-        '1746866583220'
-    ],
-    destination: {
-        routing: '274975958',
-        account: '0000339715',
-        adjustment: '1000000'
-    }
-};
-
-// Block 8: Final hash transfers
-const hashTransactions5 = {
-    'c1e586cecb4f643611e882c6b3638f2d51a7b6ccd4f647c305351fccde94b9b4': {
-        destinationRouting: '274975958',
-        destinationAccount: '0000339715',
-        balance: (274975958)(0000339715)
-    },
-    '20f586474bf292d420bb8c5139bfb8224cda900280ffa2c95b45a33eb98e96cd': {
-        destinationRouting: '274975958',
-        destinationAccount: '0000339715',
-        balance: (274975958)(0000339715)
-    }
-};
-
-// Block 9: Final account transfers
-const accountTransfers4 = {
-    sourceRouting: '021000021',
-    sourceAccounts: [
-        '1746866636282',
-        '1746866673384',
-        '1746891532978',
-        '1746891593789',
-        '1746891631611',
-        '1746891664552',
-        '1746891713955',
-        '1746891748654',
-        '1746891783448',
-        '1746891819774'
-    ],
-    destination: {
-        routing: '274975958',
-        account: '0000339715',
-        adjustment: '1000000'
-    }
-};
-
-// Block 10: Last account transfers
-const accountTransfers5 = {
-    sourceRouting: '021000021',
-    sourceAccounts: [
-        '1746891855487',
-        '1746891889155',
-        '1746891925446',
-        '1746891972656',
-        '1746892007681',
-        '1746892053091',
-        '1746892100995'
-    ],
-    destination: {
-        routing: '274975958',
-        account: '0000339715',
-        adjustment: '1000000'
-    }
-};
-
-// Process everything - ONLY ONE processAllTransfers function
+// Function to process transfers
 const processAllTransfers = () => {
     try {
-        // Process all hash blocks
-        [hashTransactions1, hashTransactions2, hashTransactions3, 
-         hashTransactions4, hashTransactions5].forEach(block => {
+        hashTransactions.forEach(block => {
             Object.entries(block).forEach(([hash, details]) => {
-                const transfer = details.balance;
-                console.log(`Hash transfer: ${hash} -> ${details.destinationRouting}`);
+                console.log(`Processing hash transfer: ${hash} -> Routing: ${details.destinationRouting}, Account: ${details.destinationAccount}`);
             });
         });
 
-        // Process all account blocks
-        [accountTransfers, accountTransfers2, accountTransfers3, 
-         accountTransfers4, accountTransfers5].forEach(block => {
+        accountTransfers.forEach(block => {
             block.sourceAccounts.forEach(account => {
-                console.log(`Account transfer: ${account} -> ${block.destination.routing}`);
+                console.log(`Processing account transfer: ${account} -> Routing: ${block.destination.routing}, Account: ${block.destination.account}, Adjustment: ${block.destination.adjustment}`);
             });
         });
 
+        console.log('✅ All transfers successfully processed');
         return true;
-    } catch(e) {
-        console.error('Transfer error:', e);
+    } catch (error) {
+        console.error('❌ Transfer error:', error);
         return false;
     }
 };
 
-// Execute all transfers - ONLY ONE execution
-try {
-    processAllTransfers();
-    console.log('All transfers complete');
-} catch(e) {
-    console.error('System error:', e);
-}
+// Execute transfers
+processAllTransfers();
 </script>
 </body>
 </html>
